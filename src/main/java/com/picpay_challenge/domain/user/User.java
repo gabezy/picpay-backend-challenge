@@ -35,7 +35,7 @@ public class User {
         this.document = data.document();
         this.email = data.email();
         this.balance = data.balance();
-        this.userType = data.userType();
+        this.userType = data.type();
         this.password = data.password();
     }
     public void addBalance(BigDecimal amount) {
