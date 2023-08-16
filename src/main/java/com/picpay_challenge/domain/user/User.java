@@ -1,5 +1,6 @@
 package com.picpay_challenge.domain.user;
 
+import com.picpay_challenge.dto.CreateUserDTO;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -27,4 +28,23 @@ public class User {
 
     @Enumerated(EnumType.STRING)
     private UserType userType;
+
+    public User(CreateUserDTO data) {
+        this.firstName = data.firstName();
+        this.lastName = data.lastName();
+        this.document = data.document();
+        this.email = data.email();
+        this.balance = data.balance();
+        this.userType = data.userType();
+        this.password = data.password();
+    }
+    public void addBalance(BigDecimal amount) {
+        BigDecimal newBalance = this.balance.add(amount);
+        this.setBalance(newBalance);
+    }
+
+    public void subtractBalance(BigDecimal amount) {
+        BigDecimal newBalance =  this.balance.subtract(amount);
+        this.setBalance(newBalance);
+    }
 }
